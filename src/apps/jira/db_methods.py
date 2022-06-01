@@ -264,7 +264,10 @@ def calculate_percentages_db(team_id, source_id):
                 developer_dic[key] = round(developer_events[key]/total_events[key]*100)
             else:
                 developer_dic[key] = 0
-        created_per = round(developer_events['Create issue']/total_created*100)
+        if 'Create issue' in developer_events.keys():
+            created_per = round(developer_events['Create issue']/total_created*100)
+        else: 
+            created_per = 0
         updated = 0
         for key in developer_dic.keys():
             if key in developer_events.keys():
