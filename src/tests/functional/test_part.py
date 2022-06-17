@@ -6,6 +6,12 @@ def test_participation_jira(test_client):
     'Dado que existe al menos un proyecto asociado al equipo de desarrollo y está registrada la fuente de información de Jira'
     'Cuando el líder de proyectos accede al dashboard del equipo de desarrollo'
     'Entonces se genera el dashboard a partir de los datos extraídos de las fuentes de información registradas'
+    
+    'HU12 - Escenario 1 parte 1'
+    'Dado que existe al menos un proyecto asociado al equipo de desarrollo y está registrada la fuente de información de Jira'
+    'Cuando el líder de proyectos accede al dashboard del equipo de desarrollo'
+    'Y se genera el dashboard a partir de los datos extraídos de las fuentes de información registradas'
+    'Entonces el sistema entrega la participación general de los desarrolladores en Jira, y la participación de los desarrolladores en Jenkins y GitHub por proyecto'
 
     team_id = '629f6ff71785c7fd81349a17'
 
