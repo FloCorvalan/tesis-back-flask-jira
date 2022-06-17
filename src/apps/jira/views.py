@@ -44,7 +44,7 @@ def get_participation():
     
     # Independientemente si hay nuevos cambios, se obtiene los porcentajes para mostrarlos
     response = get_percentages(team_id, source_id)
-    return Response(response, 'application/json')
+    return response
 
 ###################################################################
 ###################################################################
