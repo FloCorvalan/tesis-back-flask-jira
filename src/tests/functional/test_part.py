@@ -2,10 +2,10 @@ from json import loads
 from bson import ObjectId
 
 def test_participation_jira(test_client):
-    'HU5 - Escenario 1 parte 2'
+    '''HU5 - Escenario 1 parte 2'
     'Dado que existe al menos un proyecto asociado al equipo de desarrollo y está registrada la fuente de información de Jira'
     'Cuando el líder de proyectos accede al dashboard del equipo de desarrollo'
-    'Entonces se genera el dashboard a partir de los datos extraídos de las fuentes de información registradas'
+    'Entonces se genera el dashboard a partir de los datos extraídos de las fuentes de información registradas'''
 
     team_id = '629f6ff71785c7fd81349a17'
 

@@ -1,11 +1,11 @@
 from json import loads
 
 def test_team_productivity(test_client):
-    'HU8 - Escenario 1'
+    '''HU8 - Escenario 1'
     'Dado que existe información sobre al menos 1 Sprint'
     'Cuando el líder de proyectos accede al dashboard asociado a un equipo de desarrollo'
     'Y se ha generado el dashboard a partir de los datos extraídos de las fuentes de información registradas'
-    'Entonces el sistema entrega información sobre la productividad grupal de los desarrolladores'
+    'Entonces el sistema entrega información sobre la productividad grupal de los desarrolladores'''
 
     team_id = '629f6ff71785c7fd81349a17'
 

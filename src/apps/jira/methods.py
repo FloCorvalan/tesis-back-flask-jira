@@ -1,10 +1,4 @@
-PROJECT = 'AYUD'
-URL = "https://florencia-corvalan-lillo.atlassian.net"
-EMAIL = "florencia.corvalan@usach.cl"
-TOKEN = "eYKKpOVcq5fzxMmHvIeK7D02"
-
 import requests
-import numpy as np
 import json
 from bson import json_util
 from datetime import datetime
