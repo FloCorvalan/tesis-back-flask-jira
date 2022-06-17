@@ -1,7 +1,7 @@
 from json import loads
 from bson import ObjectId
 
-def test_get_save_ideal_model(test_client):
+def test_participation_jira(test_client):
     'HU5 - Escenario 1 parte 2'
     'Dado que existe al menos un proyecto asociado al equipo de desarrollo y está registrada la fuente de información de Jira'
     'Cuando el líder de proyectos accede al dashboard del equipo de desarrollo'

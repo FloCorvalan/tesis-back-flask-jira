@@ -1,6 +1,6 @@
 from json import loads
 
-def test_get_save_ideal_model(test_client):
+def test_team_productivity(test_client):
     'HU8 - Escenario 1'
     'Dado que existe información sobre al menos 1 Sprint'
     'Cuando el líder de proyectos accede al dashboard asociado a un equipo de desarrollo'

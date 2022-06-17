@@ -1,7 +1,7 @@
 from json import loads
 from bson import ObjectId
 
-def test_get_save_ideal_model(test_client):
+def test_get_registers_jira(test_client):
     'HU6 - Escenario 1'
     'Dado que se ha generado un dashboard asociado a un equipo de desarrollo'
     'Cuando el líder de proyectos selecciona un proyecto'
