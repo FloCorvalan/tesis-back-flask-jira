@@ -65,6 +65,18 @@ def get_jira_productivity():
     response = json_util.dumps(prod)
     return Response(response, mimetype='application/json')
 
+
+# Para obtener los timestamps minimo y maximo de los sprints para luego poder
+# obtener los nombres de los desarrolladores que participaron en el codigo
+# dentro de esos limites
+@jira.route('/jira/get-sprint-timestamps', methods=['POST'])
+def get_jira_min_max_sprint_timestamps():
+    team_id = request.json['team_id']
+    source_id = get_source_id(team_id)
+    timestamps = get_prod_names_info(team_id,  source_id)
+    response = json_util.dumps(timestamps)
+    return Response(response, mimetype='application/json')
+
 ###################################################################
 ###################################################################
 ###################################################################

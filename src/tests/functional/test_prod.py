@@ -39,3 +39,32 @@ def test_team_productivity(test_client):
     assert data['22']['name'] == 'Tablero Sprint 1'
     assert data['22']['estimated'] == 20.0
     assert data['22']['completed'] == 20.0
+
+
+def test_team_timestamps(test_client):
+    '''HU9 - Escenario 1'
+    Dado que se ha desarrollado código
+    Cuando el líder de proyectos accede al dashboard asociado a un equipo de desarrollo
+    Y se ha generado el dashboard a partir de los datos extraídos de las fuentes de información registradas
+    Entonces el sistema entrega los nombres de usuario de quienes han desarrollado código hasta ese momento
+    '''
+
+    team_id = '629f6ff71785c7fd81349a17'
+
+    client, mongo = test_client
+
+    response = client.post('/jira/get-sprint-timestamps', json={
+        'team_id': team_id, 
+    })
+
+    data_str = response.data.decode('utf8')
+
+    data = loads(data_str)
+
+    assert response.status_code == 200
+
+    assert 'start_timestamp' in data.keys()
+    assert 'end_timestamp' in data.keys()
+    
+    assert data['start_timestamp'] == 1654143474.0
+    assert data['end_timestamp'] == 1654673400.0
