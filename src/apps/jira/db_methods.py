@@ -17,24 +17,24 @@ def get_last_case_id(team_id):
 # Se buscan los timestamps minimo y maximo segun case id (los limites para decidir a que case id
 # pertenece el nuevo registro)
 def search_timestamps(case_id, ant, team_project_id):
-    team_project_min = mongo.db.get_collection('registers').find({'team_project_id': team_project_id, 'case_id': ant}).sort('timestamp', pymongo.DESCENDING)
-    team_project_max = mongo.db.get_collection('registers').find({'team_project_id': team_project_id, 'case_id': case_id}).sort('timestamp', pymongo.DESCENDING)
-    if(team_project_max.count_documents() > 0):
-        max = team_project_max[0]['timestamp']
+    team_project_min = mongo.db.get_collection('registers').find_one({'team_project_id': team_project_id, 'case_id': ant}, sort=[("timestamp", -1)])
+    team_project_max = mongo.db.get_collection('registers').find_one({'team_project_id': team_project_id, 'case_id': case_id}, sort=[("timestamp", -1)])
+    if(team_project_max != None):
+        max = team_project_max['timestamp']
     else:
         max = 0
-    if(team_project_min.count_documents() > 0):
-        min = team_project_min[0]['timestamp']
+    if(team_project_min != None):
+        min = team_project_min['timestamp']
     else:
         min = 0
     return min, max
 
 # Se obtiene el ultimo case id asociado a un registro de Jira
 def get_last_case_id_jira(team_project_id):
-    team_project = mongo.db.get_collection('registers').find({'team_project_id': ObjectId(team_project_id), 'tool': 'jira'}).sort('case_id', pymongo.DESCENDING)
-    if(team_project.count_documents() == 0):
+    team_project = mongo.db.get_collection('registers').find_one({'team_project_id': ObjectId(team_project_id), 'tool': 'jira'}, sort=[("case_id", -1)])
+    if(team_project == None):
         return 0
-    case_id = team_project[0]['case_id']
+    case_id = team_project['case_id']
     return case_id
 
 # Se guarda un registro de Jira para process mining
