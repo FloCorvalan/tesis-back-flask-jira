@@ -11,6 +11,7 @@ jira = Blueprint('jira', __name__)
 # Obtiene los registros para Process Mining de Jira
 @jira.route('/jira', methods=['POST'])
 def get_registers():
+    print("GET REGISTERS")
     team_id = request.json['team_id']
     source_id = get_source_id(team_id)
     get_jira_data(team_id, source_id)
