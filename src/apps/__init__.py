@@ -14,6 +14,6 @@ def create_app(config):
     mongo = database.init_app(app)
     
     # register blueprint
-    app.register_blueprint(jira)
+    app.register_blueprint(jira, url_prefix='/api')
     
     return app, mongo
