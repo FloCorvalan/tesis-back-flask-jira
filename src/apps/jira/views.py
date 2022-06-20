@@ -13,9 +13,9 @@ jira = Blueprint('jira', __name__)
 def get_registers():
     team_id = request.json['team_id']
     source_id = get_source_id(team_id)
-    res = get_jira_data(team_id, source_id)
-    return res
-
+    get_jira_data(team_id, source_id)
+    return {'message': 'Successfully extracted data'}
+    
 ###################################################################
 ###################################################################
 ###################################################################

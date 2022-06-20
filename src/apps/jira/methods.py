@@ -135,7 +135,6 @@ def get_jira_data(team_id, source_id):
 
         update_last_date(jira_info, team_project_id, team_id, project, source_id) # Si no existe, la crea
 
-    return {'message': 'Successfully extracted data'}
 
 ###################################
 ########## PARTICIPACION ##########
