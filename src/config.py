@@ -3,7 +3,7 @@ import os
 class Config(object):
     DEBUG = False
     TESTING = False
-    CSRF_ENABLED = True
+    CSRF_ENABLED = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 class ProductionConfig(Config):
