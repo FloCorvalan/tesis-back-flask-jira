@@ -332,8 +332,7 @@ def get_id_info(info):
 # Para obtener los timestamps minimo y maximo entre los sprints desde los ids
 def get_dates_info(base_url, ids, email, token):
 
-    start_timestamps_list = []
-    end_timestamps_list = []
+    timestamps = {}
 
     for i in ids:
         url = base_url + str(i)
@@ -349,17 +348,12 @@ def get_dates_info(base_url, ids, email, token):
         start_timestamp = datetime.strptime(start_date.split(".")[0], "%Y-%m-%dT%H:%M:%S").timestamp()
         end_timestamp = datetime.strptime(end_date.split(".")[0], "%Y-%m-%dT%H:%M:%S").timestamp()
 
-        start_timestamps_list.append(start_timestamp)
-        end_timestamps_list.append(end_timestamp)
+        timestamps[i] = {
+            'start': start_timestamp,
+            'end': end_timestamp
+        }
 
-    start_send = -1
-    end_send = -1
-
-    if len(start_timestamps_list) != 0 and len(end_timestamps_list) != 0:
-        start_send = min(start_timestamps_list)
-        end_send = max(end_timestamps_list)
-
-    return start_send, end_send
+    return timestamps
 
 
 # Para obtener los timestamps minimo y maximo entre los sprints
@@ -380,12 +374,11 @@ def get_prod_names_info(team_id,  source_id):
 
     sprint_url = url + '/rest/agile/1.0/sprint/'
 
-    start_send, end_send = get_dates_info(sprint_url, ids, email, token)
+    timestamps = get_dates_info(sprint_url, ids, email, token)
 
-    timestamps = {
-        'start_timestamp': start_send, 
-        'end_timestamp': end_send
+    timestamps_send = {
+        'timestamps': timestamps
     }
 
-    return timestamps
+    return timestamps_send
     
